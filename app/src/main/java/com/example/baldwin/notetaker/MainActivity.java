@@ -1,11 +1,12 @@
 package com.example.baldwin.notetaker;
 
 import android.app.ListActivity;
-//import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 
 public class MainActivity extends ListActivity {
@@ -14,14 +15,16 @@ public class MainActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ListView listView = (ListView) findViewById(android.R.id.list);
 
-        String[] dummyNotes = {"Pick up milk", "Meet with group", "Finish prototyping app",
+        String[] dummyNotes;
+        dummyNotes = new String[] {"Pick up milk", "Meet with group", "Finish prototyping app",
             "Feed the cat", "Good god man sort your life out"};
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getListView().getContext(),
-                android.R.layout.simple_list_item_1, dummyNotes);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, dummyNotes);
 
-        getListView().setAdapter(adapter);
+        listView.setAdapter(adapter);
     }
 
 
