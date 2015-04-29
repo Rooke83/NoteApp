@@ -1,17 +1,27 @@
 package com.example.baldwin.notetaker;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.ListActivity;
+//import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String[] dummyNotes = {"Pick up milk", "Meet with group", "Finish prototyping app",
+            "Feed the cat", "Good god man sort your life out"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getListView().getContext(),
+                android.R.layout.simple_list_item_1, dummyNotes);
+
+        getListView().setAdapter(adapter);
     }
 
 
