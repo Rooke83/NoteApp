@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends Activity {
 
     Context context;
     List<String> notes;
@@ -35,11 +35,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         context = this;
         notes = new ArrayList<>();
-
-        Button enter = (Button) findViewById(R.id.enter_button);
         editText = (EditText) findViewById(R.id.edit_text);
 
-        enter.setOnClickListener(this);
 
         adapter = new ArrayAdapter<>(context,
                 android.R.layout.simple_list_item_1, notes);
@@ -56,16 +53,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
         });
     }
 
-    @Override
-    public void onClick(View view) {
-
+    public void addItem(View view) {
         String input = editText.getText().toString();
         if (input.length() > 0) {
             adapter.add(input);
+            editText.setText("");
         }
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
