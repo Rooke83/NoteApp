@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,11 +21,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
+
+    public final static String EXTRA_MESSAGE = "com.example.baldwin.notetaker.MESSAGE";
 
     Context context;
-    List<String> notes;
-    ArrayAdapter<String> adapter;
+    private List<String> storeNotes;
+    private ArrayAdapter<String> adapter;
+    private ListView listView;
     private EditText editText;
 
 
@@ -34,23 +38,32 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         context = this;
-        notes = new ArrayList<>();
-        editText = (EditText) findViewById(R.id.edit_text);
+        storeNotes = new ArrayList<>();
+        editText = (EditText) findViewById(R.id.enter_text);
 
 
         adapter = new ArrayAdapter<>(context,
-                android.R.layout.simple_list_item_1, notes);
+                android.R.layout.simple_list_item_1, storeNotes);
 
-        ListView listView = (ListView) findViewById(android.R.id.list);
+        listView = (ListView) findViewById(android.R.id.list);
         listView.setAdapter(adapter);
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapter, View view, int index, long id) {
-                Toast.makeText(getApplicationContext(), "List Item Clicked: " + notes.get(index), Toast.LENGTH_LONG).show();
+                startEdit(view, index);
+                //Toast.makeText(getApplicationContext(), "List Item Clicked: " + notes.get(index), Toast.LENGTH_LONG).show();
                 return true;
             }
         });
+    }
+
+    public void startEdit(View view, int index) {
+        Intent intent = new Intent(this, EditActivity.class);
+        String note = storeNotes.get(index);
+        //Toast.makeText(getApplicationContext(), "List Item Clicked: " + note, Toast.LENGTH_LONG).show();
+        intent.putExtra(EXTRA_MESSAGE, note);
+        if (note != null) startActivity(intent);
     }
 
     public void addItem(View view) {

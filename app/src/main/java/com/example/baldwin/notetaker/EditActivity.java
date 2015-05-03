@@ -1,17 +1,27 @@
 package com.example.baldwin.notetaker;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 
 public class EditActivity extends ActionBarActivity {
+
+    private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
+        Intent intent = getIntent();
+        String note = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        editText = (EditText) findViewById(R.id.edit_text);
+        editText.setText(note);
+
+
     }
 
     @Override
