@@ -66,7 +66,7 @@ public class MainActivity extends ActionBarActivity {
         if (note != null) startActivity(intent);
     }
 
-    public void addItem(View view) {
+    public void saveNote(View view) {
         String input = editText.getText().toString();
         if (input.length() > 0) {
             adapter.add(input);
