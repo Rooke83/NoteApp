@@ -31,7 +31,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@+id/enter_button"
-        android:layout_toStartOf="@+id/enter_button" />
+        android:layout_toStartOf="@+id/enter_button"
+        />
 
     <Button
         android:id="@+id/enter_button"
@@ -41,7 +42,8 @@
         android:onClick="saveNote"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        />
 
 
 
