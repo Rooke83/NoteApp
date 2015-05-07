@@ -25,7 +25,8 @@
         android:id="@+id/cancel_button"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="cancelEdit"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -33,7 +34,8 @@
         android:text="@string/delete"
         android:id="@+id/delete_button"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="deleteNote"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -42,6 +44,7 @@
         android:id="@+id/save_button"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/edit_text"
-        android:layout_alignEnd="@+id/edit_text" />
+        android:layout_alignEnd="@+id/edit_text"
+        android:onClick="saveEdit"/>
 
 </RelativeLayout>

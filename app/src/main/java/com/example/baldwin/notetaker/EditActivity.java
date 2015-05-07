@@ -50,4 +50,16 @@ public class EditActivity extends ActionBarActivity {
         super.onPause();
 
     }
+
+    public void saveEdit(){
+
+    }
+    
+    public void cancelEdit() {
+
+    }
+
+    public void deleteNote() {
+
+    }
 }
