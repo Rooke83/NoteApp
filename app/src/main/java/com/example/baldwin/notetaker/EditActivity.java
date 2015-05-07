@@ -45,4 +45,9 @@ public class EditActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void onPause() {
+        super.onPause();
+
+    }
 }

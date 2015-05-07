@@ -84,24 +84,23 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void populateArray() {
-        File file = new File(this.getFilesDir(), filename);
-        if (file.exists()) {
-            try {
-                FileInputStream input = openFileInput(filename);
-                DataInputStream din = new DataInputStream(input);
-                int size = din.readInt();
-                for (int i = 0; i < size; i++) {
-                    String line = din.readUTF();
+        try
+        {
+            FileInputStream input = openFileInput(filename);
+            DataInputStream din = new DataInputStream(input);
+            int size = din.readInt();
+            for (int i = 0; i < size; i++) {
+                String line = din.readUTF();
 
-                    storeNotes.add(line);
+                storeNotes.add(line);
 
-                }
-                din.close();
-                input.close();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+            din.close();
+            input.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
 
     }
 
@@ -133,6 +132,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         storeNotes.clear();
+
 
     }
     @Override
