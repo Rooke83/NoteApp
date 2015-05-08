@@ -24,11 +24,8 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.example.baldwin.notetaker" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28d85b02-5af8-49ca-ac5a-ded6a8d4145d" name="Default" comment="Added edit and delete functionality in EditActivity. Appropriate changes made to support this in the PopulateArray() method of MainActivity. Confirmed functionality through testing.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/baldwin/notetaker/EditActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/baldwin/notetaker/EditActivity.java" />
+    <list default="true" id="28d85b02-5af8-49ca-ac5a-ded6a8d4145d" name="Default" comment="Made a change to correct a small potential error I introduced in MainActivity. Wasn't showing up as a problem in tests, but thought better safe than sorry.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/baldwin/notetaker/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/baldwin/notetaker/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="NoteApp.iws" />
@@ -101,8 +98,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/baldwin/notetaker/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33174226">
-              <caret line="135" column="63" selection-start-line="135" selection-start-column="63" selection-end-line="135" selection-end-column="63" />
+            <state vertical-scroll-proportion="-0.46062052">
+              <caret line="87" column="9" selection-start-line="87" selection-start-column="9" selection-end-line="87" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -1246,7 +1243,13 @@
       <option name="project" value="LOCAL" />
       <updated>1430966044678</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added edit and delete functionality in EditActivity. Appropriate changes made to support this in the PopulateArray() method of MainActivity. Confirmed functionality through testing.">
+      <created>1431120666374</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1431120666374</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1260,10 +1263,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="25" y="25" width="1400" height="822" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32882884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32882884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32826748" sideWeight="0.503231" order="7" side_tool="true" content_ui="tabs" />
@@ -1312,7 +1315,8 @@
     <MESSAGE value="Added a save to file functionality. Notes should persist now.&#10;&#10;Still need to implement the dave edit and delete feature. Which might require changing the way long press passes Intent." />
     <MESSAGE value="Added onPause to edit acitiviy. It does nothing besides call super.onPause.&#10;Got rid of new File creation and if exists in main activity for the onPause activity. Just a try catch now." />
     <MESSAGE value="Added edit and delete functionality in EditActivity. Appropriate changes made to support this in the PopulateArray() method of MainActivity. Confirmed functionality through testing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added edit and delete functionality in EditActivity. Appropriate changes made to support this in the PopulateArray() method of MainActivity. Confirmed functionality through testing." />
+    <MESSAGE value="Made a change to correct a small potential error I introduced in MainActivity. Wasn't showing up as a problem in tests, but thought better safe than sorry." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made a change to correct a small potential error I introduced in MainActivity. Wasn't showing up as a problem in tests, but thought better safe than sorry." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1787,8 +1791,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/baldwin/notetaker/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33174226">
-          <caret line="135" column="63" selection-start-line="135" selection-start-column="63" selection-end-line="135" selection-end-column="63" />
+        <state vertical-scroll-proportion="-0.46062052">
+          <caret line="87" column="9" selection-start-line="87" selection-start-column="9" selection-end-line="87" selection-end-column="9" />
           <folding />
         </state>
       </provider>

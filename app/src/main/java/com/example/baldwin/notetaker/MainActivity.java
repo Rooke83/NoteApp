@@ -109,9 +109,9 @@ public class MainActivity extends ActionBarActivity {
                 if (del) {
                     storeNotes.remove(arrPos);
                 }
-                din.close();
-                input.close();
             }
+            din.close();
+            input.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
