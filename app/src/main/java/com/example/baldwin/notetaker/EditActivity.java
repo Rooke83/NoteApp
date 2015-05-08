@@ -5,12 +5,16 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+
+import org.w3c.dom.Text;
 
 
 public class EditActivity extends ActionBarActivity {
 
     private EditText editText;
+    private int arrPos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +24,7 @@ public class EditActivity extends ActionBarActivity {
         String note = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         editText = (EditText) findViewById(R.id.edit_text);
         editText.setText(note);
-
+        arrPos = intent.getIntExtra("arrPos", 0);
 
     }
 
@@ -51,15 +55,24 @@ public class EditActivity extends ActionBarActivity {
 
     }
 
-    public void saveEdit(){
-
+    public void saveEdit(View view){
+        String toSend = editText.getText().toString();
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("note", toSend);
+        intent.putExtra("arrPos", arrPos);
+        startActivity(intent);
     }
     
-    public void cancelEdit() {
-
+    public void cancelEdit(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
-    public void deleteNote() {
-
+    public void deleteNote(View view) {
+        String toSend = editText.getText().toString();
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("delete", true);
+        intent.putExtra("arrPos", arrPos);
+        startActivity(intent);
     }
 }

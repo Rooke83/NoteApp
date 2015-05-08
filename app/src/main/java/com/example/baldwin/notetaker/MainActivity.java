@@ -50,7 +50,6 @@ public class MainActivity extends ActionBarActivity {
         storeNotes = new ArrayList<>();
         editText = (EditText) findViewById(R.id.enter_text);
 
-
         adapter = new ArrayAdapter<>(context,
                 android.R.layout.simple_list_item_1, storeNotes);
 
@@ -72,7 +71,8 @@ public class MainActivity extends ActionBarActivity {
         String note = storeNotes.get(index);
         //Toast.makeText(getApplicationContext(), "List Item Clicked: " + note, Toast.LENGTH_LONG).show();
         intent.putExtra(EXTRA_MESSAGE, note);
-        if (note != null) startActivity(intent);
+        intent.putExtra("arrPos", index);
+        if (!note.trim().equals("")) startActivity(intent);
     }
 
     public void saveNote(View view) {
@@ -95,8 +95,23 @@ public class MainActivity extends ActionBarActivity {
                 storeNotes.add(line);
 
             }
-            din.close();
-            input.close();
+
+            Intent received = getIntent();
+            if(received != null) {
+                String mod = received.getStringExtra("note");
+                Boolean del = received.getBooleanExtra("delete", false);
+                int arrPos = received.getIntExtra("arrPos", -1);
+
+                if (mod != null) {
+                    storeNotes.set(arrPos, mod);
+                }
+
+                if (del) {
+                    storeNotes.remove(arrPos);
+                }
+                din.close();
+                input.close();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
