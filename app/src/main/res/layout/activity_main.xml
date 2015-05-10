@@ -9,9 +9,6 @@
     android:id="@+id/layout">
 
     <!-- Widgets -->
-
-
-
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
@@ -44,7 +41,5 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         />
-
-
 
 </RelativeLayout>

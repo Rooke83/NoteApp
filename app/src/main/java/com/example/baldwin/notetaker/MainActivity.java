@@ -5,6 +5,7 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -37,6 +38,7 @@ public class MainActivity extends ActionBarActivity {
     private ListView listView;
     private EditText editText;
     private String filename = "savedNotes";
+
 
 
     @Override
@@ -122,15 +124,32 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public void onResume() {
         super.onResume();
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        String save_string_key = null;
+        String type_here = null;
+        String stuff = sharedPref.getString(
+                String.valueOf(save_string_key),
+                String.valueOf(type_here));
+        EditText text =  (EditText) findViewById(R.id.enter_text);
+        text.setText(stuff);
+
+
         populateArray();
         adapter = new ArrayAdapter<>(context,
                 android.R.layout.simple_list_item_1, storeNotes);
         listView.setAdapter(adapter);
     }
 
+
     @Override
     public void onPause() {
         super.onPause();
+        String save_string_key = null;
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        EditText text = (EditText) findViewById(R.id.enter_text);
+        editor.putString(String.valueOf(save_string_key), text.getText().toString());
+        editor.commit();
 
         try {
             FileOutputStream output = openFileOutput(filename, this.MODE_PRIVATE);
@@ -147,7 +166,6 @@ public class MainActivity extends ActionBarActivity {
         }
 
         storeNotes.clear();
-
 
     }
     @Override
