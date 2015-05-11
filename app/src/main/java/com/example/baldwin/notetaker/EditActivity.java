@@ -1,6 +1,8 @@
 package com.example.baldwin.notetaker;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,15 +18,20 @@ public class EditActivity extends ActionBarActivity {
     private EditText editText;
     private int arrPos;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
         Intent intent = getIntent();
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+
         String note = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         editText = (EditText) findViewById(R.id.edit_text);
         editText.setText(note);
         arrPos = intent.getIntExtra("arrPos", 0);
+        SharedPreferences.Editor editor = sharedPref.edit();
+      //  editor.clear();
 
     }
 
@@ -50,9 +57,61 @@ public class EditActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
     public void onPause() {
         super.onPause();
+        String save_string_key = "test";
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        EditText text = (EditText) findViewById(R.id.edit_text);
+        editor.putString(save_string_key, text.getText().toString());
+        editor.commit();
 
+    }
+
+    @Override
+    public void onResume() {
+
+        super.onResume();
+
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+
+        String save_string_key = "test";
+
+
+        String stuff = sharedPref.getString(
+               save_string_key, "");
+        if(stuff!=null || stuff!=""){
+            EditText text =  (EditText) findViewById(R.id.edit_text);
+            text.setText(stuff);
+        }
+        else {
+            Intent intent = getIntent();
+
+
+            String note = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+            editText = (EditText) findViewById(R.id.edit_text);
+            editText.setText(note);
+            arrPos = intent.getIntExtra("arrPos", 0);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            //  editor.clear();
+        }
+
+    }
+    @Override
+    public void onStop(){
+        super.onStop();
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.clear();
+    }
+
+   @Override
+    public void onBackPressed(){
+       super.onBackPressed();
+       SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+       SharedPreferences.Editor editor = sharedPref.edit();
+       editor.clear();
     }
 
     public void saveEdit(View view){
