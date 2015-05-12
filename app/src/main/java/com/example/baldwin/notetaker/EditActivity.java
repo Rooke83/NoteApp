@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -22,9 +23,10 @@ public class EditActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Toast.makeText(getApplicationContext(), "THIS IS MY TOAST MESSAGE", Toast.LENGTH_LONG).show();
         setContentView(R.layout.activity_edit);
         Intent intent = getIntent();
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences("test", 0);
 
         String note = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         editText = (EditText) findViewById(R.id.edit_text);
@@ -60,12 +62,13 @@ public class EditActivity extends ActionBarActivity {
     @Override
     public void onPause() {
         super.onPause();
-        String save_string_key = "test";
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        EditText text = (EditText) findViewById(R.id.edit_text);
-        editor.putString(save_string_key, text.getText().toString());
-        editor.commit();
+
+            String save_string_key = "test";
+            SharedPreferences sharedPref = getSharedPreferences("test", 0);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            EditText text = (EditText) findViewById(R.id.edit_text);
+            editor.putString(save_string_key, text.getText().toString());
+            editor.commit();
 
     }
 
@@ -74,18 +77,16 @@ public class EditActivity extends ActionBarActivity {
 
         super.onResume();
 
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences("test", 0);
 
         String save_string_key = "test";
 
-
         String stuff = sharedPref.getString(
                save_string_key, "");
-        if(stuff!=null || stuff!=""){
+        if(stuff!=null && stuff!="") {
             EditText text =  (EditText) findViewById(R.id.edit_text);
             text.setText(stuff);
-        }
-        else {
+        } /*else {
             Intent intent = getIntent();
 
 
@@ -95,23 +96,38 @@ public class EditActivity extends ActionBarActivity {
             arrPos = intent.getIntExtra("arrPos", 0);
             SharedPreferences.Editor editor = sharedPref.edit();
             //  editor.clear();
-        }
+        }*/
 
     }
     @Override
     public void onStop(){
-        super.onStop();
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+
+        SharedPreferences sharedPref = getSharedPreferences("test", 0);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.clear();
+        editor.commit();
+        super.onStop();
     }
 
    @Override
     public void onBackPressed(){
-       super.onBackPressed();
-       SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+
+       SharedPreferences sharedPref = getSharedPreferences("test", 0);
        SharedPreferences.Editor editor = sharedPref.edit();
-       editor.clear();
+       editor.remove("test");
+       editor.commit();
+       super.onBackPressed();
+    }
+
+    @Override
+    public boolean onNavigateUp(){
+
+        SharedPreferences sharedPref = getSharedPreferences("test", 0);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.remove("test");
+        editor.commit();
+        return super.onNavigateUp();
+
     }
 
     public void saveEdit(View view){
@@ -123,6 +139,12 @@ public class EditActivity extends ActionBarActivity {
     }
     
     public void cancelEdit(View view) {
+
+        SharedPreferences sharedPref = getSharedPreferences("test", 0);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.remove("test");
+        editor.commit();
+        super.onBackPressed();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
