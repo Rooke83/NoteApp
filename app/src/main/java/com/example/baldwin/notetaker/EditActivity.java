@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
+
 
 import org.w3c.dom.Text;
 
@@ -23,7 +23,7 @@ public class EditActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toast.makeText(getApplicationContext(), "THIS IS MY TOAST MESSAGE", Toast.LENGTH_LONG).show();
+
         setContentView(R.layout.activity_edit);
         Intent intent = getIntent();
         SharedPreferences sharedPref = getSharedPreferences("test", 0);
